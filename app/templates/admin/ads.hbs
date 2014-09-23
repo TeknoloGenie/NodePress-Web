@@ -1,0 +1,19 @@
+<div class="row navbar-offset">
+    <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
+        {{#if hasClearance}}
+            {{partial 'menu'}}
+        {{/if}}
+    </div>
+    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 main">
+        <h1 class="page-header navbar-offset">{{title}}</h1>
+        <form class="col-sm-12" role="form">
+            <h4>Choose which ad you want to change</h4>
+            {{view Ember.Select class="form-control np-margin-xlg" content=availableAds value=selectedAd}}
+            <p class="ng-margin-xlg">{{{selectedAdDescription}}}</p>
+            <h4>Copy and Paste the ad code into here</h4>
+                {{textarea class="form-control" valueBinding="script"}}
+            <button class="btn btn-lg np-margin-xlg" type="submit" {{action 'setAd'}}>Set Ad</button>
+        </form>
+            {{{script}}}
+    </div>
+</div>

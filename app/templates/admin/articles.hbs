@@ -1,0 +1,122 @@
+<div class="row navbar-offset">
+    <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
+        {{#if hasClearance}}
+            {{partial 'menu'}}
+        {{/if}}
+    </div>
+    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 main">
+        <h1 class="page-header">Articles</h1>
+
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li class="active"><a href="#allArticlesTab" role="tab" data-toggle="tab">All</a></li>
+            <li><a href="#newArticleTab" role="tab" data-toggle="tab">New</a></li>
+            <li><a href="#editArticleTab" role="tab" data-toggle="tab">Edit</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="allArticlesTab">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Edit</th>
+                        <th>ID</th>
+                        <th>Cover Photo</th>
+                        <th>Date Published</th>
+                        <th>Status</th>
+                        <th>Heading</th>
+                        <th>Slug</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each}}
+                        <tr>
+                            <td><i {{action 'edit'}} class="icon ion-edit"></i> <i {{action 'remove'}} class="icon ion-trash-b"></i></td>
+                            <td>{{id}}</td>
+                            <td><img class="img-thumb" {{bind-attr src=coverPhoto}}></td>
+                            <td>{{datePublished}}</td>
+                            <td>{{status}}</td>
+                            <td>{{heading}}</td>
+                            <td>{{slug}}</td>
+                        </tr>
+                    {{else}}
+                    {{/each}}
+
+                    {{outlet}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="newArticleTab">
+                <form class="col-sm-12" role="form">
+                    <h2 class="form-signin-heading">New Article</h2>
+                    {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="Title" autofocus=true valueBinding="articleTitle"}}
+                    {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="Short Caption" valueBinding="articleHeading"}}
+                    {{!--{{type-ahead class="form-control np-margin-sm" data=controller.tags name="tag" selection=tags}}--}}
+                    {{!--{{type-ahead class="form-control np-margin-sm" data=controller.categories name="category" selection=category}}--}}
+                    {{!--{{type-ahead class="form-control np-margin-sm" name="s" data=content name="category" selection=media}}--}}
+
+                    {{view Ember.Select
+                    contentBinding="articleStatusTypes"
+                    selectionBinding="articleStatus"
+                    class="form-control np-margin-sm"
+                    prompt="Choose post status"}}
+
+                    {{#em-wysiwyg configName="bs" as_html=articleBody}}
+                        {{#em-wysiwyg-toolbar}}
+                            {{#em-wysiwyg-action-group}}
+                                {{em-wysiwyg-action command="bold" title="Bold (Ctrl/Cmd+B)" icon="fa fa-bold"}}
+                                {{em-wysiwyg-action command="italic" title="Italic (Ctrl/Cmd+I)" icon="fa fa-italic"}}
+                            {{/em-wysiwyg-action-group}}
+                            {{#em-wysiwyg-action-group}}
+                                {{em-wysiwyg-action command="justifyleft" title="Align Left (Ctrl/Cmd+L)" icon="fa fa-align-left"}}
+                                {{em-wysiwyg-action command="justifyright" title="Align Right (Ctrl/Cmd+R)" icon="fa fa-align-right"}}
+                            {{/em-wysiwyg-action-group}}
+                            {{#em-wysiwyg-action-group}}
+                                {{em-wysiwyg-action command="undo" title="Undo(Ctrl/Cmd+Z)" icon="fa fa-undo"}}
+                                {{em-wysiwyg-action command="redo" title="Redo (Ctrl/Cmd+Y)" icon="fa fa-repeat"}}
+                            {{/em-wysiwyg-action-group}}
+                        {{/em-wysiwyg-toolbar}}
+                        {{em-wysiwyg-editor}}
+                    {{/em-wysiwyg}}
+
+
+                    <button class="btn btn-lg node-bg-green np-margin-xlg" type="submit" {{action 'createArticle'}}>Create</button>
+                    {{view 'image-preview' src=content}}
+                    {{{articleBody}}}
+                </form>
+            </div>
+            <div class="tab-pane" id="editArticleTab">
+                <form class="col-sm-12" role="form">
+                    <h2 class="form-signin-heading">Edit Article</h2>
+                    {{view Ember.Select
+                    contentBinding="model"
+                    selectionBinding="selectedArticle"
+                    class="form-control np-margin-sm"
+                    prompt="Choose a Article to edit"
+                    optionLabelPath="content.title"
+                    optionValuePath="content.id"}}
+
+                    {{view Ember.TextField
+                    class="form-control np-margin-sm"
+                    type="text"
+                    value=selectedPost.shortBody
+                    placeholder="Short Caption"
+                    valueBinding="articleEditHeading"}}
+
+                    {{view Ember.Select
+                    contentBinding="articleStatusTypes"
+                    selectionBinding="articleEditStatus"
+                    class="form-control np-margin-sm"
+                    prompt="Choose post status"}}
+
+                    {{!--{{wysiwyg-editor content=postEditBody}}--}}
+                    <button class="btn btn-lg node-bg-green np-margin-xlg" type="submit" {{action 'updateArticle'}}>Update Article</button>
+                    {{{articleEditBody}}}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

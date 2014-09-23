@@ -1,0 +1,44 @@
+<div class="row navbar-offset">
+    <div class="container">
+        <div class="col-md-12">
+
+            <div class="col-md-9 ad-ready">
+                {{{topAdScript}}}
+            </div>
+            <div class="col-md-3 fb-like">
+                <h3>Like!</h3>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="container">
+        <div class="col-md-12">
+
+            <div class="col-md-9">
+                {{#each}}
+                    <div class="col-md-9 np-article-box np-margin-xlg">
+                        <img class="img-responsive" {{bind-attr src=coverPhoto}}>
+                        <h4>{{#link-to 'article' id}} {{ title }} {{/link-to}}</h4>
+                        <i class="fa fa-calendar pull-left"></i> <h6>{{format-date datePublished}}</h6>
+                        <h5>{{ heading }}</h5>
+                    </div>
+                {{/each }}
+                <div class="col-md-3 sm-blog-post">
+                    {{!--{{#each favoriteArticle in controller}}--}}
+                        {{!--<img src="{{ favoriteArticle.coverPhoto}}">--}}
+                        {{!--<h5> {{#link-to 'article' id}} {{ favoriteArticle.title }} {{/link-to}} </h5>--}}
+                    {{!--{{/each }}--}}
+                </div>
+            </div>
+            <div class="col-md-3 right-side-ad">
+                {{{sideBarTopAdScript}}}
+                    Social Media Icon???
+                {{{sideBarBottomAdScript}}}
+            </div>
+        </div>
+    </div>
+
+</div>

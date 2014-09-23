@@ -1,0 +1,15 @@
+html, body {
+  margin: 20px;
+}
+
+.sub-nav th a:after {
+    content: " 25B425BE";
+}
+
+.sub-nav th .asc a:after {
+     content: " 25B4";
+ }
+
+.sub-nav th .desc a:after {
+     content: " 25BE";
+ }

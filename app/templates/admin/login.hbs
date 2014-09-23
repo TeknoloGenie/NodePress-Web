@@ -1,0 +1,15 @@
+<div class="row navbar-offset">
+    <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
+
+    </div>
+    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 main">
+        <div class="container">
+            <h1 class="page-header navbar-offset">Agent Login</h1>
+            <form class="col-sm-6 col-md-5 col-lg-4" role="form">
+                {{view Ember.TextField class="form-control np-margin-sm" type="email" placeholder="Email address" autofocus=true valueBinding="formEmail"}}
+                {{view Ember.TextField class="form-control np-margin-sm" type="password" placeholder="Password" valueBinding="formPassword"}}
+                <button class="btn np-margin-xlg" type="submit" {{action 'login'}}>Login</button>
+            </form>
+        </div>
+    </div>
+</div>

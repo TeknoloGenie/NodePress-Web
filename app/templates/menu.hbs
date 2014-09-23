@@ -1,0 +1,26 @@
+<ul class="nav nav-pills nav-stacked">
+
+    <li>
+        {{#link-to 'admin.dashboard'}} <span class="glyphicon glyphicon-dashboard"></span> Dashboard {{/link-to}}
+    </li>
+    <li>
+        {{#link-to 'admin.articles'}} <span class="glyphicon glyphicon-pushpin"></span> Articles {{/link-to}}
+    </li>
+    <li>
+        {{#link-to 'admin.comments'}} <span class="glyphicon glyphicon-comment"></span> Comments {{/link-to}}
+    </li>
+    <li>
+        {{#link-to 'admin.photos'}} <span class="glyphicon glyphicon-pushpin"></span> Photos {{/link-to}}
+    </li>
+    {{#if hasTopLevelClearance}}
+        <li>
+            {{#link-to 'admin.users'}} <span class="glyphicon glyphicon-user"></span> Users {{/link-to}}
+        </li>
+        <li>
+            {{#link-to 'admin.ads'}} <span class="glyphicon glyphicon-usd"></span> Ad Spots {{/link-to}}
+        </li>
+        <li>
+            {{#link-to 'admin.settings'}} <span class="glyphicon glyphicon-cog"></span> Settings {{/link-to}}
+        </li>
+    {{/if}}
+</ul>

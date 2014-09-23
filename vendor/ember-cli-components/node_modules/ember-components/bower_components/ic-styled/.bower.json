@@ -1,0 +1,35 @@
+{
+  "name": "ic-styled",
+  "version": "1.1.7",
+  "authors": [
+    "Ryan Florence <rpflorence@gmail.com>"
+  ],
+  "main": "main.js",
+  "moduleFormat": [
+    "amd",
+    "cjs",
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "bower_components",
+    "node_modules",
+    "package.json",
+    "testem.json",
+    "test.js",
+    "**/.*"
+  ],
+  "dependencies": {
+    "ember": ">=1.2.0 <1.8.0"
+  },
+  "homepage": "https://github.com/instructure/ic-styled",
+  "_release": "1.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.7",
+    "commit": "1d4fab8802a8393890be5a61c258ee4f7a1f66e7"
+  },
+  "_source": "git://github.com/instructure/ic-styled.git",
+  "_target": "~1.1.6",
+  "_originalSource": "ic-styled"
+}

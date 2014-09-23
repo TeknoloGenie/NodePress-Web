@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="page-header navbar-offset">Member Signup</div>
+    <form class="form-signin col-lg-4 col-lg-offset-4" role="form">
+        <h2 class="form-signin-heading">Sign Up</h2>
+        {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="First Name" autofocus=true valueBinding="formFirstName"}}
+        {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="Last Name" valueBinding="formLastName"}}
+        {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="Username" valueBinding="formUsername"}}
+        {{view Ember.TextField class="form-control np-margin-sm" type="email" placeholder="Email Address" valueBinding="formEmail"}}
+        {{view Ember.TextField class="form-control np-margin-sm" type="password" placeholder="Password" valueBinding="formPassword"}}
+        {{view Ember.TextField class="form-control np-margin-sm" type="password" placeholder="Verify Password" valueBinding="formVerifyPassword"}}
+        <button class="btn btn-lg node-bg-green btn-block np-margin-xlg" type="submit" {{action 'signup'}}>Sign Up</button>
+    </form>
+</div>

@@ -1,0 +1,20 @@
+<div class="row navbar-offset">
+    <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
+        {{#if hasClearance}}
+            {{partial 'menu'}}
+        {{/if}}
+    </div>
+    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 main">
+        <h1 class="page-header">Settings</h1>
+        <div class="container">
+            <form class="col-sm-6 col-md-5 col-lg-4" role="form">
+
+                {{input class="form-control np-margin-sm" type="text" placeholder="Name" autofocus=true valueBinding=name}}
+                {{input class="form-control np-margin-sm" type="text" placeholder="URL" value=url}}
+                {{input class="form-control np-margin-sm" type="text" placeholder="Slogan" value=slogan size="24"}}
+                {{input class="form-control np-margin-sm" type="email" placeholder="Administrator Email" valueBinding=adminEmail}}
+                <button class="btn btn-lg node-bg-green np-margin-xlg" type="submit" {{action 'save'}}>Save</button>
+            </form>
+        </div>
+    </div>
+</div>

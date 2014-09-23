@@ -1,0 +1,68 @@
+<div class="navbar navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-inner row">
+            {{#if adminNavbar}}
+                {{#link-to 'index' class="navbar-brand node-gray"}}{{ name }} {{/link-to}}
+                {{#if isLoggedIn }}
+                    <div class="dropdown">
+                    <span class="pull-right np-margin-xlg dropdown-toggle" type="text" id="userMenu" data-toggle="dropdown">
+                        Admin
+                        <span class="caret"></span>
+                    </span>
+                        <ul class="dropdown-menu navbar-offset pull-right" role="menu" aria-labelledby="userMenu">
+                            {{#if inAdminPortal}}
+                                <li role="presentation"><a role="menuitem"> {{#link-to 'articles'}}Back to site{{/link-to}}</a></li>
+                            {{else}}
+                                <li role="presentation"><a role="menuitem"> {{#link-to 'admin.dashboard'}}Dashboard{{/link-to}}</a></li>
+                            {{/if}}
+                            <li role="presentation" class="divider"></li>
+                            <li role="presentation"><a role="menuitem" {{action 'logout'}}>Logout</a></li>
+                        </ul>
+                    </div>
+                {{else}}
+
+                {{/if}}
+
+            {{else}}
+                <div class="col-sm-12">
+                    <div class="col-sm-1">
+                        {{#link-to 'index' class="navbar-brand node-gray"}}{{ name }} {{/link-to}}
+                    </div>
+
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="right-inner-addon np-margin-med">
+                            <input type="text" class="form-control" placeholder="Search...">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        {{!--categories--}}
+                    </div>
+
+                    <div class="col-md-2">
+
+                        {{#if isLoggedIn }}
+                            <div class="dropdown">
+                            <span class="pull-right np-margin-xlg dropdown-toggle" type="text" id="userMenu" data-toggle="dropdown">
+                                User
+                                <span class="caret"></span>
+                            </span>
+                                <ul class="dropdown-menu navbar-offset pull-right" role="menu" aria-labelledby="userMenu">
+                                    <li role="presentation"><a role="menuitem"> {{#link-to 'admin.articles'}}Quick Post{{/link-to}}</a></li>
+                                    <li role="presentation" class="divider"></li>
+                                    <li role="presentation"><a role="menuitem" {{action 'logout'}}>Logout</a></li>
+                                </ul>
+                            </div>
+                        {{else}}
+                            <p class="navbar-text navbar-right">{{#link-to 'login' }} Login {{/link-to}}</p>
+                        {{/if}}
+                    </div>
+
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</div>
+
+{{outlet}}

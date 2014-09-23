@@ -1,0 +1,59 @@
+<div class="row navbar-offset">
+    <div class="col-lg-2 col-md-2 col-sm-2 sidebar">
+        {{#if hasClearance}}
+            {{partial 'menu'}}
+        {{/if}}
+    </div>
+    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-sm-10 col-sm-offset-2 main">
+        <h1 class="page-header">Photos</h1>
+
+        <ul class="nav nav-tabs nav-justified" role="tablist">
+            <li class="active"><a href="#allPhotosTab" role="tab" data-toggle="tab">All</a></li>
+            <li><a href="#newPhotosTab" role="tab" data-toggle="tab">New</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="allPhotosTab">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Preview</th>
+                        <th>ID</th>
+                        <th>Date Published</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each}}
+                        <tr>
+                            <td><i {{action 'edit'}} class="icon ion-edit"></i> <i {{action 'remove'}} class="icon ion-trash-b"></i></td>
+                            <td><img class="img-thumb" {{bind-attr src=url}}></td>
+                            <td>{{id}}</td>
+                            <td>{{format-date dateUploaded}}</td>
+                            <td>{{alt}}</td>
+                        </tr>
+                    {{else}}
+                    {{/each}}
+
+                    {{outlet}}
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tab-pane" id="newPhotosTab">
+                <form class="col-sm-12" role="form">
+                    <h2 class="form-signin-heading">Upload New Photos</h2>
+                    {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="Description" valueBinding="alt"}}
+                    {{view Ember.TextField class="form-control np-margin-sm" type="text" placeholder="Keywords, Seperated, By, Commas" valueBinding="keywords"}}
+                    <span class="btn btn-default btn-file">
+                        <span class="glyphicon glyphicon-picture "></span> Choose Photos
+                        {{view 'file-picker'}}
+                    </span>
+                    <button class="btn btn-lg node-bg-green np-margin-xlg" type="submit" {{action 'upload'}}>Upload</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
